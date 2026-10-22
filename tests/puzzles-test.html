@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cipher Engine Tests</title>
+</head>
+
+<body>
+
+    <h1>CIPHER — Puzzle Engine Tests</h1>
+
+    <pre id="results"></pre>
+
+    <script type="module">
+
+        import {
+            decodeCaesar,
+            validateAnswer
+        } from "../js/puzzles.js";
+
+
+        const tests = [
+
+            {
+                name: "Test 1: Caesar decoding",
+                passed: decodeCaesar("KHOOR", 3) === "HELLO"
+            },
+
+            {
+                name: "Test 2: Mission message",
+                passed: decodeCaesar(
+                    "DWWDFN DW PLGQLJKW", 3
+                ) === "ATTACK AT MIDNIGHT"
+            },
+
+            {
+                name: "Test 3: Lowercase support",
+                passed: decodeCaesar("khoor", 3) === "hello"
+            },
+
+            {
+                name: "Test 4: Alphabet wraparound",
+                passed: decodeCaesar("ABC", 3) === "XYZ"
+            },
+
+            {
+                name: "Test 5: Correct answer",
+                passed: validateAnswer(
+                    "hello", "HELLO"
+                ) === true
+            },
+
+            {
+                name: "Test 6: Wrong answer",
+                passed: validateAnswer(
+                    "WORLD", "HELLO"
+                ) === false
+            },
+
+            {
+                name: "Test 7: Whitespace handling",
+                passed: validateAnswer(
+                    "  attack   at midnight ",
+                    "ATTACK AT MIDNIGHT"
+                ) === true
+            }
+
+        ];
+
+
+        const results = tests.map(test => {
+
+            return `${test.passed ? "PASS" : "FAIL"} - ${test.name}`;
+
+        });
+
+
+        document.getElementById("results").textContent =
+            results.join("\n");
+
+    </script>
+
+</body>
+</html>
