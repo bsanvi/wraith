@@ -4,20 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070b0d">
     <title>WRAITH | Cybersecurity Escape Room</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
+
     <nav>
-        <div class="logo">WRAITH</div>
-        <div class="status">● SYSTEM ONLINE</div>
+        <div class="logo">WRAITH<span>.</span></div>
+        <div class="status">
+            <span class="status-dot"></span> SYSTEM ONLINE
+        </div>
     </nav>
 
     <main>
-        <section class="hero">
+
+        <!-- SCREEN 1: MAIN MENU -->
+        <section class="screen hero active" id="homeScreen">
             <div class="tag">CYBERSECURITY ESCAPE ROOM</div>
             <h1>WRAI<span>TH</span></h1>
+            <div class="hero-line"></div>
 
             <p class="subtitle">
                 Every system hides a secret.<br>
@@ -27,82 +34,217 @@
 
             <div class="warning">[ AUTHORIZED SIMULATION ONLY ]</div>
 
-            <button class="start-btn" id="startBtn">
+            <button class="primary-btn" id="startBtn">
                 INITIATE MISSION →
             </button>
+
+            <p class="version">WRAITH SYSTEMS // VERSION 1.0</p>
         </section>
 
-        <section class="mission" id="mission">
-            <h2>MISSION 01: THE MIDNIGHT BREACH</h2>
 
-            <p>
-                02:13 AM — Your security dashboard has detected
-                an unusual login to the fictional Orion research server.
+        <!-- SCREEN 2: MISSION BRIEFING -->
+        <section class="screen mission" id="missionScreen">
+            <div class="tag">MISSION CONTROL // 001</div>
+
+            <div class="mission-header">
+                <div>
+                    <p class="eyebrow">INCOMING SECURITY ALERT</p>
+                    <h2>THE MIDNIGHT BREACH</h2>
+                </div>
+                <div class="mission-number">01</div>
+            </div>
+
+            <div class="alert-box">
+                <span class="alert-icon">!</span>
+                <div>
+                    <strong>UNUSUAL ACTIVITY DETECTED</strong>
+                    <p>Orion Research Server // 02:13 AM</p>
+                </div>
+            </div>
+
+            <h3>MISSION BRIEFING</h3>
+
+            <p class="description">
+                At 02:13 AM, the fictional Orion research server
+                detected unusual login activity. Three failed attempts
+                were followed by a successful login from an unfamiliar
+                location.
             </p>
 
-            <p>
-                Three failed logins were followed by one successful
-                login from an unfamiliar location.
+            <p class="description">
+                Inspect the available evidence, collect clues, and answer
+                the investigation questions to reconstruct the incident.
             </p>
 
-            <p>Your objective: investigate the incident and uncover the truth.</p>
+            <div class="objective">
+                <span class="objective-label">YOUR OBJECTIVE</span>
+                <p>Find the suspicious activity and complete the case.</p>
+            </div>
 
-            <button id="investigateBtn">BEGIN INVESTIGATION →</button>
-            <p id="feedback" aria-live="polite"></p>
+            <div class="button-row">
+                <button class="secondary-btn" id="homeBtn">
+                    ← MAIN MENU
+                </button>
+                <button class="primary-btn" id="investigateBtn">
+                    OPEN CASE FILE →
+                </button>
+            </div>
         </section>
 
-        <section class="investigation" id="investigation">
+
+        <!-- SCREEN 3: INVESTIGATION -->
+        <section class="screen investigation" id="investigationScreen">
+
             <div class="tag">DIGITAL FORENSICS // CASE 001</div>
-            <h2>Digital Detective</h2>
-            <p class="subtitle">
-                Review the fictional login records. Identify the event
-                that deserves the closest investigation.
-            </p>
 
-            <div class="log-list">
-                <div class="log">
-                    <span>02:08 AM</span>
-                    <span>Login attempt — failed</span>
-                    <span class="failed">FAILED</span>
+            <div class="investigation-header">
+                <div>
+                    <p class="eyebrow">ACTIVE INVESTIGATION</p>
+                    <h2>Digital Detective</h2>
                 </div>
 
-                <div class="log">
-                    <span>02:09 AM</span>
-                    <span>Login attempt — failed</span>
-                    <span class="failed">FAILED</span>
-                </div>
-
-                <div class="log">
-                    <span>02:10 AM</span>
-                    <span>Login attempt — failed</span>
-                    <span class="failed">FAILED</span>
-                </div>
-
-                <div class="log suspicious-log">
-                    <span>02:13 AM</span>
-                    <span>Login from unfamiliar location</span>
-                    <span class="suspicious">REVIEW</span>
+                <div class="xp-box">
+                    <span>YOUR XP</span>
+                    <strong id="xpValue">000</strong>
                 </div>
             </div>
 
-            <h3>Which event should you investigate first?</h3>
+            <div class="progress-area">
+                <div class="progress-label">
+                    <span>CASE PROGRESS</span>
+                    <span id="progressText">0 / 7 COMPLETE</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
 
-            <div class="choices">
-                <button class="choice" data-answer="normal">
-                    A. The first failed login
+            <div class="case-grid">
+
+                <!-- Evidence panel -->
+                <section class="evidence-panel">
+                    <h3>01 // EVIDENCE LOG</h3>
+                    <p class="panel-description">
+                        Select each event to inspect its evidence.
+                    </p>
+
+                    <button class="evidence-item" data-evidence="0">
+                        <span class="evidence-time">02:08 AM</span>
+                        <span class="evidence-name">Failed login attempt</span>
+                        <span class="evidence-status">UNREVIEWED</span>
+                    </button>
+
+                    <button class="evidence-item" data-evidence="1">
+                        <span class="evidence-time">02:09 AM</span>
+                        <span class="evidence-name">Failed login attempt</span>
+                        <span class="evidence-status">UNREVIEWED</span>
+                    </button>
+
+                    <button class="evidence-item" data-evidence="2">
+                        <span class="evidence-time">02:10 AM</span>
+                        <span class="evidence-name">Failed login attempt</span>
+                        <span class="evidence-status">UNREVIEWED</span>
+                    </button>
+
+                    <button class="evidence-item" data-evidence="3">
+                        <span class="evidence-time">02:13 AM</span>
+                        <span class="evidence-name">Successful unfamiliar login</span>
+                        <span class="evidence-status">UNREVIEWED</span>
+                    </button>
+
+                    <div class="clue-counter">
+                        <span>CLUES DISCOVERED</span>
+                        <strong id="clueCount">0 / 4</strong>
+                    </div>
+                </section>
+
+
+                <!-- Evidence detail panel -->
+                <section class="detail-panel">
+                    <p class="eyebrow">EVIDENCE INSPECTOR</p>
+                    <h3 id="evidenceTitle">Awaiting evidence selection</h3>
+
+                    <p id="evidenceDescription" class="description">
+                        Select an event from the evidence log to reveal
+                        its details.
+                    </p>
+
+                    <div class="evidence-finding" id="evidenceFinding">
+                        NO EVIDENCE SELECTED
+                    </div>
+
+                    <p class="hint-text">
+                        Inspect all four events to unlock the case questions.
+                    </p>
+                </section>
+
+            </div>
+
+
+            <!-- Questions -->
+            <section class="question-panel" id="questionPanel">
+                <div class="tag">02 // ANALYST CHALLENGES</div>
+
+                <h3 id="questionTitle">Case questions locked</h3>
+
+                <p id="questionDescription" class="description">
+                    Review all four evidence records to unlock the
+                    investigation questions.
+                </p>
+
+                <div class="choices" id="choices">
+                    <button class="choice" disabled>
+                        Evidence review required
+                    </button>
+                </div>
+
+                <div class="feedback" id="questionFeedback"
+                     aria-live="polite"></div>
+
+                <button class="primary-btn" id="nextQuestionBtn" hidden>
+                    NEXT QUESTION →
                 </button>
-                <button class="choice" data-answer="suspicious">
-                    B. The successful login from an unfamiliar location
+            </section>
+
+
+            <!-- Case completed -->
+            <section class="completion-panel" id="completionPanel" hidden>
+                <div class="completion-symbol">✓</div>
+                <p class="tag">CASE 001 // CLOSED</p>
+                <h2>INVESTIGATION COMPLETE</h2>
+
+                <p class="description">
+                    You reviewed the evidence and completed all the
+                    analyst challenges. The fictional incident has
+                    been documented.
+                </p>
+
+                <div class="final-score">
+                    <span>FINAL XP</span>
+                    <strong id="finalXP">000</strong>
+                </div>
+
+                <button class="primary-btn" id="playAgainBtn">
+                    REPLAY MISSION ↻
                 </button>
-                <button class="choice" data-answer="normal">
-                    C. The timestamp format
+            </section>
+
+            <div class="button-row bottom-actions" id="investigationActions">
+                <button class="secondary-btn" id="backToMissionBtn">
+                    ← MISSION BRIEFING
+                </button>
+                <button class="secondary-btn" id="homeFromGameBtn">
+                    MAIN MENU
                 </button>
             </div>
 
-            <p id="detectiveFeedback" aria-live="polite"></p>
         </section>
+
     </main>
 
-    <footer>WRAITH // CYBERSECURITY TRAINING SIMULATION</footer>
+    <footer>
+        WRAITH <span>//</span> CYBERSECURITY TRAINING SIMULATION
+    </footer>
+
 </body>
 </html>
