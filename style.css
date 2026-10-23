@@ -1,0 +1,229 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #070b0d;
+    color: #e8f1f2;
+    font-family: "Courier New", monospace;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(#00ff9c0a 1px, transparent 1px),
+        linear-gradient(90deg, #00ff9c0a 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    border-bottom: 1px solid #1b3430;
+}
+
+.logo {
+    color: #00ff9c;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.status, .tag {
+    color: #00ff9c;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.hero {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.tag {
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(55px, 12vw, 110px);
+    letter-spacing: 12px;
+    text-shadow: 0 0 35px #00ff9c30;
+}
+
+h1 span {
+    color: #00ff9c;
+}
+
+.subtitle {
+    color: #91a8a5;
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 650px;
+}
+
+.warning {
+    margin-top: 30px;
+    color: #9baaa8;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.start-btn {
+    margin-top: 30px;
+    padding: 16px 28px;
+    background: #00ff9c;
+    border: 1px solid #00ff9c;
+    color: #07100c;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.start-btn:hover {
+    background: transparent;
+    color: #00ff9c;
+    box-shadow: 0 0 25px #00ff9c35;
+}
+
+.mission, .investigation {
+    display: none;
+    position: relative;
+    width: min(850px, 90%);
+    margin: 0 auto 60px;
+    padding: 30px;
+    background: #0c1414;
+    border: 1px solid #00ff9c55;
+}
+
+.mission h2, .investigation h2 {
+    color: #00ff9c;
+    margin-bottom: 20px;
+}
+
+.mission p, .investigation p {
+    color: #bdccca;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.mission button {
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: transparent;
+    color: #00ff9c;
+    border: 1px solid #00ff9c;
+}
+
+.log-list {
+    display: grid;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.log {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 15px;
+    align-items: center;
+    padding: 16px;
+    background: #101d1c;
+    border: 1px solid #203b35;
+    font-size: 13px;
+}
+
+.failed {
+    color: #ffb45e;
+}
+
+.suspicious {
+    color: #ff7777;
+}
+
+.suspicious-log {
+    border-color: #ff777766;
+}
+
+.investigation h3 {
+    margin: 25px 0 15px;
+    font-size: 15px;
+}
+
+.choices {
+    display: grid;
+    gap: 12px;
+}
+
+.choice {
+    padding: 15px;
+    text-align: left;
+    background: #101d1c;
+    border: 1px solid #315047;
+    color: #e8f1f2;
+}
+
+.choice:hover {
+    border-color: #00ff9c;
+    color: #00ff9c;
+}
+
+#detectiveFeedback {
+    margin-top: 20px;
+    color: #00ff9c;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #637572;
+    border-top: 1px solid #1b3430;
+    font-size: 11px;
+}
+
+@media (max-width: 600px) {
+    nav {
+        padding: 20px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .status {
+        font-size: 9px;
+    }
+
+    h1 {
+        letter-spacing: 5px;
+    }
+
+    .log {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .mission, .investigation {
+        padding: 20px;
+    }
+}

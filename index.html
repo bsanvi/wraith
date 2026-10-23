@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WRAITH | Cybersecurity Escape Room</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">WRAITH</div>
+        <div class="status">● SYSTEM ONLINE</div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="tag">CYBERSECURITY ESCAPE ROOM</div>
+            <h1>WRAI<span>TH</span></h1>
+
+            <p class="subtitle">
+                Every system hides a secret.<br>
+                Every clue leads somewhere.<br>
+                Can you uncover the truth before time runs out?
+            </p>
+
+            <div class="warning">[ AUTHORIZED SIMULATION ONLY ]</div>
+
+            <button class="start-btn" id="startBtn">
+                INITIATE MISSION →
+            </button>
+        </section>
+
+        <section class="mission" id="mission">
+            <h2>MISSION 01: THE MIDNIGHT BREACH</h2>
+
+            <p>
+                02:13 AM — Your security dashboard has detected
+                an unusual login to the fictional Orion research server.
+            </p>
+
+            <p>
+                Three failed logins were followed by one successful
+                login from an unfamiliar location.
+            </p>
+
+            <p>Your objective: investigate the incident and uncover the truth.</p>
+
+            <button id="investigateBtn">BEGIN INVESTIGATION →</button>
+            <p id="feedback" aria-live="polite"></p>
+        </section>
+
+        <section class="investigation" id="investigation">
+            <div class="tag">DIGITAL FORENSICS // CASE 001</div>
+            <h2>Digital Detective</h2>
+            <p class="subtitle">
+                Review the fictional login records. Identify the event
+                that deserves the closest investigation.
+            </p>
+
+            <div class="log-list">
+                <div class="log">
+                    <span>02:08 AM</span>
+                    <span>Login attempt — failed</span>
+                    <span class="failed">FAILED</span>
+                </div>
+
+                <div class="log">
+                    <span>02:09 AM</span>
+                    <span>Login attempt — failed</span>
+                    <span class="failed">FAILED</span>
+                </div>
+
+                <div class="log">
+                    <span>02:10 AM</span>
+                    <span>Login attempt — failed</span>
+                    <span class="failed">FAILED</span>
+                </div>
+
+                <div class="log suspicious-log">
+                    <span>02:13 AM</span>
+                    <span>Login from unfamiliar location</span>
+                    <span class="suspicious">REVIEW</span>
+                </div>
+            </div>
+
+            <h3>Which event should you investigate first?</h3>
+
+            <div class="choices">
+                <button class="choice" data-answer="normal">
+                    A. The first failed login
+                </button>
+                <button class="choice" data-answer="suspicious">
+                    B. The successful login from an unfamiliar location
+                </button>
+                <button class="choice" data-answer="normal">
+                    C. The timestamp format
+                </button>
+            </div>
+
+            <p id="detectiveFeedback" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <footer>WRAITH // CYBERSECURITY TRAINING SIMULATION</footer>
+</body>
+</html>
